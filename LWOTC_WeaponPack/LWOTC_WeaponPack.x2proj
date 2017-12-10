@@ -22,6 +22,12 @@
     <Content Include="Config\XComStrategyTuning.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\BattleRifleMeshPack_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\LMG_attachments_textures.upk">
       <SubType>Content</SubType>
     </Content>
@@ -280,6 +286,9 @@
     <Content Include="Content\LWSniperRifle_LS.upk">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\UILibrary_BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\UILibrary_LW_Coilguns.upk">
       <SubType>Content</SubType>
     </Content>
@@ -526,6 +535,39 @@
     <Content Include="Localization\Lasers\XComGame.rus">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Localization\LMGs\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Localization\SMGs\XComGame.chn">
       <SubType>Content</SubType>
     </Content>
@@ -625,6 +667,7 @@
     <Folder Include="Localization\" />
     <Folder Include="Localization\Lasers" />
     <Folder Include="Localization\Coils" />
+    <Folder Include="Localization\LMGs" />
     <Folder Include="Localization\SMGs" />
     <Folder Include="Src\" />
     <Folder Include="Src\LWOTC_WeaponPack\" />
