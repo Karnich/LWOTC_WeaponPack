@@ -22,10 +22,10 @@
     <Content Include="Config\XComStrategyTuning.ini">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Content\BattleRifleMeshPack_ModShaderCache.upk">
+    <Content Include="Content\LMG_attachments_textures.upk">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Content\BRMeshPack.upk">
+    <Content Include="Content\LMG_Stuff.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LWAccessories_CG.upk">
@@ -278,9 +278,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LWSniperRifle_LS.upk">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Content\UILibrary_BRMeshPack.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\UILibrary_LW_Coilguns.upk">

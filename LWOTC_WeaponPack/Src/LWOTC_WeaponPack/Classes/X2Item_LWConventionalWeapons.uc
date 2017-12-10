@@ -11,6 +11,7 @@ class X2Item_LWConventionalWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue BATTLERIFLE_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue SMG_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_CONVENTIONAL_BASEDAMAGE;
+var config WeaponDamageValue LMG_CONVENTIONAL_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int BATTLERIFLE_CONVENTIONAL_AIM;
@@ -59,11 +60,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_BR_Conventional());
 	Weapons.AddItem(CreateTemplate_SMG_Conventional());
 	Weapons.AddItem(CreateTemplate_MR_Conventional());
+	Weapons.AddItem(CreateTemplate_LMG_Conventional());
 
-	if (class'X2DownloadableContentInfo_BattleRiflePack'.default.LMG_AVAILABLE)
-	{
-		ModWeapons.AddItem(CreateTemplate_LMG_Conventional());
-	}
 	return Weapons;
 }
 
@@ -298,7 +296,7 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.StartingItem = class'X2DownloadableContentInfo_BattleRiflePack'.default.LMG_AVAILABLE;
+	Template.StartingItem = true;
 	Template.bInfiniteItem = true;
 	Template.CanBeBuilt = false;
 
@@ -307,10 +305,10 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
-	Template.Aim += default.LMG_AIM_MODIFIER;
-	Template.BaseDamage.Damage += default.LMG_DAMAGE_MODIFIER;
-	Template.Abilities.AddItem('LMG_Modifiers');
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BattleRiflePack'.default.LMG_MOBILITY_MODIFIER);
-		
+	//Template.Aim += default.LMG_AIM_MODIFIER;
+	//Template.BaseDamage.Damage += default.LMG_DAMAGE_MODIFIER;
+	//Template.Abilities.AddItem('LMG_Modifiers');
+	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BattleRiflePack'.default.LMG_MOBILITY_MODIFIER);
+		//
 	return Template;
 }
