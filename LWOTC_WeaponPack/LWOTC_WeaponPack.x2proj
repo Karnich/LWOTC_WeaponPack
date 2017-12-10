@@ -22,6 +22,12 @@
     <Content Include="Config\XComStrategyTuning.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\BattleRifleMeshPack_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\LWAccessories_CG.upk">
       <SubType>Content</SubType>
     </Content>
@@ -272,6 +278,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LWSniperRifle_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_BRMeshPack.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\UILibrary_LW_Coilguns.upk">
@@ -551,6 +560,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Localization\SMGs\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\XComGame.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="ModPreview.jpg">
