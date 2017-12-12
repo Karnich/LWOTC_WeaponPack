@@ -4,6 +4,7 @@ var config WeaponDamageValue ASSAULTRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue BATTLERIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue SMG_COIL_BASEDAMAGE;
 var config WeaponDamageValue CANNON_COIL_BASEDAMAGE;
+var config WeaponDamageValue LMG_COIL_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_COIL_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_COIL_BASEDAMAGE;
@@ -43,6 +44,13 @@ var config int CANNON_COIL_ICLIPSIZE;
 var config int CANNON_COIL_ISOUNDRANGE;
 var config int CANNON_COIL_IENVIRONMENTDAMAGE;
 var config int CANNON_COIL_UPGRADESLOTS;
+
+var config int LMG_COIL_AIM;
+var config int LMG_COIL_CRITCHANCE;
+var config int LMG_COIL_ICLIPSIZE;
+var config int LMG_COIL_ISOUNDRANGE;
+var config int LMG_COIL_IENVIRONMENTDAMAGE;
+var config int LMG_COIL_UPGRADESLOTS;
 
 var config int SHOTGUN_COIL_AIM;
 var config int SHOTGUN_COIL_CRITCHANCE;
@@ -102,6 +110,10 @@ var config int CANNON_CG_SUPPLYCOST;
 var config int CANNON_CG_ALLOYCOST;
 var config int CANNON_CG_ELERIUMCOST;
 
+var config int LMG_CG_SUPPLYCOST;
+var config int LMG_CG_ALLOYCOST;
+var config int LMG_CG_ELERIUMCOST;
+
 var config int SHOTGUN_CG_SUPPLYCOST;
 var config int SHOTGUN_CG_ALLOYCOST;
 var config int SHOTGUN_CG_ELERIUMCOST;
@@ -130,6 +142,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateBattleRifle_Coil_Template());
 	Weapons.AddItem(CreateSMG_Coil_Template());
 	Weapons.AddITem(CreateCannon_Coil_Template());
+	Weapons.AddITem(CreateLMG_Coil_Template());
 	Weapons.AddItem(CreateShotgun_Coil_Template());
 	Weapons.AddItem(CreateSniperRifle_Coil_Template());
 	Weapons.AddItem(CreateMarksmanRifle_Coil_Template());
@@ -809,6 +822,84 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	}
 
 
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+// **************************************************************************
+// ***                          LMG                                        ***
+// **************************************************************************
+static function X2DataTemplate CreateLMG_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_CV');
+	Template.WeaponPanelImage = "_ConventionalRifle";	
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'cannon';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.MEDLONG_COIL_RANGE;
+	Template.BaseDamage = default.LMG_COIL_BASEDAMAGE;
+	Template.Aim = default.LMG_COIL_AIM;
+	Template.CritChance = default.LMG_COIL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.LMG_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.LMG_COIL_IENVIRONMENTDAMAGE;
+	Template.NumUpgradeSlots = default.LMG_COIL_UPGRADESLOTS;
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');	
+	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+	Template.AddDefaultAttachment('Mag', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_MagB", , "img:///UILibrary_BRMeshPack.Attach.SAW_CV_MagA");
+	Template.AddDefaultAttachment('Optic', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_OpticA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_OpticA");
+	Template.AddDefaultAttachment('Stock', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_StockA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_StockA");
+	Template.AddDefaultAttachment('Fore', "BRMeshPack.Meshes.SM_CV_Bipod", , "img:///UILibrary_BRMeshPack.Attach.MR_CV_Bipod");
+	Template.AddDefaultAttachment('Handle', "BRMeshPack.Meshes.SM_CV_Handle", , "img:///UILibrary_BRMeshPack.Attach.LMG_CV_Handle");
+	Template.AddDefaultAttachment('Reargrip', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_ReargripA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_ReargripA");
+	Template.AddDefaultAttachment('Trigger', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_TriggerA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight", , "");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'LMG_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'LMG_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.LMG_CG_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.LMG_CG_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.LMG_CG_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 20;
+	}
+	
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
 	return Template;
