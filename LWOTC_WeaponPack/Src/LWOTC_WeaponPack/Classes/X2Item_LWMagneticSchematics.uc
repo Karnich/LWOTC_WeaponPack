@@ -216,7 +216,7 @@ static function X2DataTemplate CreateTemplate_LMG_Magnetic_Schematic()
 	// only add elerium cost if configured value greater than 0
 	if (default.LMG_MAGNETIC_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.MR_MAGNETIC_SCHEMATIC_ELERIUMCOST;
+		Artifacts.Quantity = default.LMG_MAGNETIC_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
