@@ -143,6 +143,10 @@ var config int CANNON_LS_SUPPLYCOST;
 var config int CANNON_LS_ALLOYCOST;
 var config int CANNON_LS_ELERIUMCOST;
 
+var config int LMG_LS_SUPPLYCOST;
+var config int LMG_LS_ALLOYCOST;
+var config int LMG_LS_ELERIUMCOST;
+
 var config int SHOTGUN_LS_SUPPLYCOST;
 var config int SHOTGUN_LS_ALLOYCOST;
 var config int SHOTGUN_LS_ELERIUMCOST;
@@ -942,14 +946,35 @@ static function X2DataTemplate CreateTemplate_LMG_Laser()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.StartingItem = false;
-	Template.bInfiniteItem = true;
-	Template.CanBeBuilt = false;
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
 
-	Template.fKnockbackDamageAmount = 5.0f;
-	Template.fKnockbackDamageRadius = 0.0f;
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'LMG_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'LMG_CV'; // Which item this will be upgraded from		
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
 
-	Template.DamageTypeTemplateName = 'Projectile_Conventional';
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.LMG_LS_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.LMG_LS_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.LMG_LS_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 10;
+
+	}
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
 
 	return Template;
 }
