@@ -258,13 +258,13 @@ static function X2DataTemplate CreateTemplate_LMG_Magnetic()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_CV');
-	Template.WeaponPanelImage = "_ConventionalRifle";
-	Template.EquipSound = "Conventional_Weapon_Equip";
+	Template.WeaponPanelImage = "_ConventionalRifle";	
 
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 2;
 
 	Template.RangeAccuracy = default.MEDLONG_MAGNETIC_RANGE;

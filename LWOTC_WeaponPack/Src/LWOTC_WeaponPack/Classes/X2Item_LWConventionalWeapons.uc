@@ -79,12 +79,12 @@ static function X2DataTemplate CreateTemplate_BR_Conventional()
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'BR_CV');
 	Template.WeaponPanelImage = "_ConventionalRifle";
-	Template.EquipSound = "Conventional_Weapon_Equip";
-
+	
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";   
+	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 	
 	Template.Abilities.AddItem('BR_CV_StatBonus');
@@ -197,13 +197,13 @@ static function X2DataTemplate CreateTemplate_MR_Conventional()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MR_CV');
-	Template.WeaponPanelImage = "_ConventionalRifle";
-	Template.EquipSound = "Conventional_Weapon_Equip";
+	Template.WeaponPanelImage = "_ConventionalRifle";	
 
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
 	Template.RangeAccuracy = default.MEDLONG_CONVENTIONAL_RANGE;
@@ -254,13 +254,13 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_CV');
-	Template.WeaponPanelImage = "_ConventionalRifle";
-	Template.EquipSound = "Conventional_Weapon_Equip";
+	Template.WeaponPanelImage = "_ConventionalRifle";	
 
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";,
+	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
 	Template.RangeAccuracy = default.MEDLONG_CONVENTIONAL_RANGE;
