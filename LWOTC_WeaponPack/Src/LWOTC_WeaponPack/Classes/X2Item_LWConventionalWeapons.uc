@@ -9,9 +9,9 @@ class X2Item_LWConventionalWeapons extends X2Item config(LW_WeaponPack);
 // Variables from config - GameData_WeaponData.ini
 // ***** Damage arrays for attack actions  *****
 var config WeaponDamageValue BATTLERIFLE_CONVENTIONAL_BASEDAMAGE;
-var config WeaponDamageValue SMG_CONVENTIONAL_BASEDAMAGE;
-var config WeaponDamageValue MARKSMANRIFLE_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue LMG_CONVENTIONAL_BASEDAMAGE;
+var config WeaponDamageValue MARKSMANRIFLE_CONVENTIONAL_BASEDAMAGE;
+var config WeaponDamageValue SMG_CONVENTIONAL_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int BATTLERIFLE_CONVENTIONAL_AIM;
@@ -20,6 +20,20 @@ var config int BATTLERIFLE_CONVENTIONAL_ICLIPSIZE;
 var config int BATTLERIFLE_CONVENTIONAL_ISOUNDRANGE;
 var config int BATTLERIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 var config int BATTLERIFLE_CONVENTIONAL_UPGRADESLOTS;
+
+var config int LMG_CONVENTIONAL_AIM;
+var config int LMG_CONVENTIONAL_CRITCHANCE;
+var config int LMG_CONVENTIONAL_ICLIPSIZE;
+var config int LMG_CONVENTIONAL_ISOUNDRANGE;
+var config int LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
+var config int LMG_CONVENTIONAL_UPGRADESLOTS;
+
+var config int MARKSMANRIFLE_CONVENTIONAL_AIM;
+var config int MARKSMANRIFLE_CONVENTIONAL_CRITCHANCE;
+var config int MARKSMANRIFLE_CONVENTIONAL_ICLIPSIZE;
+var config int MARKSMANRIFLE_CONVENTIONAL_ISOUNDRANGE;
+var config int MARKSMANRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
+var config int MARKSMANRIFLE_CONVENTIONAL_UPGRADESLOTS;
 
 var config int SMG_CONVENTIONAL_AIM;
 var config int SMG_CONVENTIONAL_CRITCHANCE;
@@ -30,20 +44,6 @@ var config int SMG_CONVENTIONAL_ISUPPLIES;
 var config int SMG_CONVENTIONAL_TRADINGPOSTVALUE;
 var config int SMG_CONVENTIONAL_IPOINTS;
 var config int SMG_CONVENTIONAL_UPGRADESLOTS;
-
-var config int MARKSMANRIFLE_CONVENTIONAL_AIM;
-var config int MARKSMANRIFLE_CONVENTIONAL_CRITCHANCE;
-var config int MARKSMANRIFLE_CONVENTIONAL_ICLIPSIZE;
-var config int MARKSMANRIFLE_CONVENTIONAL_ISOUNDRANGE;
-var config int MARKSMANRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
-var config int MARKSMANRIFLE_CONVENTIONAL_UPGRADESLOTS;
-
-var config int LMG_CONVENTIONAL_AIM;
-var config int LMG_CONVENTIONAL_CRITCHANCE;
-var config int LMG_CONVENTIONAL_ICLIPSIZE;
-var config int LMG_CONVENTIONAL_ISOUNDRANGE;
-var config int LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
-var config int LMG_CONVENTIONAL_UPGRADESLOTS;
 
 // ***** Range Modifier Tables *****
 var config array<int> SHORT_CONVENTIONAL_RANGE;
@@ -58,9 +58,9 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	//create all three tech tiers of weapons
 	Weapons.AddItem(CreateTemplate_BR_Conventional());
-	Weapons.AddItem(CreateTemplate_SMG_Conventional());
-	Weapons.AddItem(CreateTemplate_MR_Conventional());
 	Weapons.AddItem(CreateTemplate_LMG_Conventional());
+	Weapons.AddItem(CreateTemplate_MR_Conventional());
+	Weapons.AddItem(CreateTemplate_SMG_Conventional());	
 
 	return Weapons;
 }
@@ -246,11 +246,6 @@ static function X2DataTemplate CreateTemplate_MR_Conventional()
 	return Template;
 }
 
-defaultproperties
-{
-	bShouldCreateDifficultyVariants = true
-}
-
 // **************************************************************************
 // ***                          LMG                                        ***
 // **************************************************************************
@@ -305,10 +300,10 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
-	//Template.Aim += default.LMG_AIM_MODIFIER;
-	//Template.BaseDamage.Damage += default.LMG_DAMAGE_MODIFIER;
-	//Template.Abilities.AddItem('LMG_Modifiers');
-	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BattleRiflePack'.default.LMG_MOBILITY_MODIFIER);
-		//
 	return Template;
+}
+
+defaultproperties
+{
+	bShouldCreateDifficultyVariants = true
 }
