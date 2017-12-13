@@ -196,8 +196,8 @@ static function X2DataTemplate CreateTemplate_LMG_Magnetic_Schematic()
 	//Template.ItemsToUpgrade.AddItem('MR_CV');
 
 	// Items being created
-	//Template.ReferenceItemTemplate = 'MR_MG';
-	//Template.HideIfPurchased = 'MR_BM';
+	Template.ReferenceItemTemplate = 'LMG_MG';
+	Template.HideIfPurchased = 'LMG_BM';
 
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');

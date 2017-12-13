@@ -11,6 +11,7 @@ class X2Item_LWBeamWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue BATTLERIFLE_BEAM_BASEDAMAGE;
 var config WeaponDamageValue SMG_BEAM_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_BEAM_BASEDAMAGE;
+var config WeaponDamageValue LMG_BEAM_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 
@@ -37,6 +38,13 @@ var config int MARKSMANRIFLE_BEAM_ICLIPSIZE;
 var config int MARKSMANRIFLE_BEAM_ISOUNDRANGE;
 var config int MARKSMANRIFLE_BEAM_IENVIRONMENTDAMAGE;
 var config int MARKSMANRIFLE_BEAM_UPGRADESLOTS;
+
+var config int LMG_BEAM_AIM;
+var config int LMG_BEAM_CRITCHANCE;
+var config int LMG_BEAM_ICLIPSIZE;
+var config int LMG_BEAM_ISOUNDRANGE;
+var config int LMG_BEAM_IENVIRONMENTDAMAGE;
+var config int LMG_BEAM_UPGRADESLOTS;
 
 // ***** Range Modifier Tables *****
 var config array<int> SHORT_BEAM_RANGE;
@@ -225,6 +233,59 @@ static function X2DataTemplate CreateTemplate_MR_Beam()
 	Template.bInfiniteItem = true;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
+
+	return Template;
+}
+
+// **************************************************************************
+// ***                          LMG                                        ***
+// **************************************************************************
+static function X2DataTemplate CreateTemplate_LMG_Beam()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_CV');
+	Template.WeaponPanelImage = "_ConventionalRifle";	
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'cannon';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.EquipSound = "Magnetic_Weapon_Equip";
+	Template.Tier = 2;
+
+	Template.RangeAccuracy = default.MEDLONG_BEAM_RANGE;
+	Template.BaseDamage = default.LMG_BEAM_BASEDAMAGE;
+	Template.Aim = default.LMG_BEAM_AIM;
+	Template.CritChance = default.LMG_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_BEAM_ICLIPSIZE;
+	Template.iSoundRange = default.LMG_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.LMG_BEAM_IENVIRONMENTDAMAGE;
+	Template.NumUpgradeSlots = default.LMG_BEAM_UPGRADESLOTS;
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');	
+	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+	Template.AddDefaultAttachment('Mag', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_MagB", , "img:///UILibrary_BRMeshPack.Attach.SAW_CV_MagA");
+	Template.AddDefaultAttachment('Optic', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_OpticA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_OpticA");
+	Template.AddDefaultAttachment('Stock', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_StockA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_StockA");
+	Template.AddDefaultAttachment('Fore', "BRMeshPack.Meshes.SM_CV_Bipod", , "img:///UILibrary_BRMeshPack.Attach.MR_CV_Bipod");
+	Template.AddDefaultAttachment('Handle', "BRMeshPack.Meshes.SM_CV_Handle", , "img:///UILibrary_BRMeshPack.Attach.LMG_CV_Handle");
+	Template.AddDefaultAttachment('Reargrip', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_ReargripA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_ReargripA");
+	Template.AddDefaultAttachment('Trigger', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_TriggerA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight", , "");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
 	return Template;
 }
